@@ -14,19 +14,21 @@ interface AuthContextType {
 export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthContextProvider({ children }: AuthContextProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const auth = localStorage.getItem("auth");
+    return auth === "true";
+  });
 
-  async function login() {
-    fakeTimerWait();
+  const login = async () => {
+    await fakeTimerWait();
     setIsAuthenticated(true);
     localStorage.setItem("auth", "true");
-  }
+  };
 
-  async function logout() {
-    fakeTimerWait();
+  const logout = async () => {
     setIsAuthenticated(false);
     localStorage.removeItem("auth");
-  }
+  };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>

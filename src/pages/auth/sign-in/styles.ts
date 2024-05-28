@@ -13,6 +13,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 5rem 1rem;
+  gap: 2rem;
 
   h1 {
     text-align: center;
@@ -27,9 +28,32 @@ export const Container = styled.div`
   }
 `;
 
+export const ContainerForm = styled.form`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media (min-width: ${breakpoints.small}) {
+    width: 32rem;
+  }
+`;
+
+export const Input = styled.input`
+  height: 2.5rem;
+  padding-inline: 0.5rem;
+
+  background-color: ${(props) => props.theme.colors.buttonBackground};
+  color: ${(props) => props.theme.colors.text};
+
+  border: 1px solid ${(props) => props.theme.colors.buttonBorder};
+  border-radius: 0.25rem;
+`;
+
 export const LoginButton = styled.button`
   height: 4rem;
-  width: 100%;
+  margin-top: 1rem;
 
   display: flex;
   align-items: center;
@@ -39,6 +63,7 @@ export const LoginButton = styled.button`
   background-color: ${(props) => props.theme.colors.buttonBackground};
   color: ${(props) => props.theme.colors.text};
   font-weight: 700;
+  font-size: 1.125rem;
 
   border: 1px solid ${(props) => props.theme.colors.buttonBorder};
   border-radius: 0.25rem;

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Container, LoginButton } from "./styles";
+import { Container, ContainerForm, Input, LoginButton } from "./styles";
 import { AuthContext } from "../../../contexts/auth-contexts";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,8 @@ export function SignIn() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  async function handleLogin() {
+  async function handleLogin(event: React.FormEvent) {
+    event.preventDefault();
     await login();
     navigate("/");
   }
@@ -15,9 +16,11 @@ export function SignIn() {
   return (
     <Container>
       <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <ContainerForm onSubmit={handleLogin}>
+        <Input type="email" id="email" placeholder="E-mail" />
+        <Input type="password" id="password" placeholder="Senha" />
         <LoginButton type="submit">Entrar</LoginButton>
-      </form>
+      </ContainerForm>
     </Container>
   );
 }
