@@ -11,3 +11,11 @@ export const Container = styled.div`
     font-weight: 700;
   }
 `;
+
+export const SignOut = styled.a`
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: ${(props) => props.theme.colors.red};
+  cursor: pointer;
+`;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const breakpoints = {
@@ -33,7 +34,7 @@ export const ContainerForm = styled.form`
 
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 
   @media (min-width: ${breakpoints.small}) {
     width: 32rem;
@@ -41,7 +42,7 @@ export const ContainerForm = styled.form`
 `;
 
 export const Input = styled.input`
-  height: 2.5rem;
+  height: 2.75rem;
   padding-inline: 0.5rem;
 
   background-color: ${(props) => props.theme.colors.buttonBackground};
@@ -74,4 +75,9 @@ export const LoginButton = styled.button`
   &:hover {
     border-color: ${(props) => props.theme.colors.red};
   }
+`;
+
+export const LinkSignUp = styled(Link)`
+  text-decoration: none;
+  color: ${(props) => props.theme.colors.red};
 `;

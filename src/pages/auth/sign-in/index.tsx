@@ -1,7 +1,13 @@
 import { useContext } from "react";
-import { Container, ContainerForm, Input, LoginButton } from "./styles";
-import { AuthContext } from "../../../contexts/auth-contexts";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/auth-contexts";
+import {
+  Container,
+  ContainerForm,
+  Input,
+  LinkSignUp,
+  LoginButton,
+} from "./styles";
 
 export function SignIn() {
   const { login } = useContext(AuthContext);
@@ -21,6 +27,7 @@ export function SignIn() {
         <Input type="password" id="password" placeholder="Senha" />
         <LoginButton type="submit">Entrar</LoginButton>
       </ContainerForm>
+      <LinkSignUp to={"/auth/sign-up"}>Cadastre-se</LinkSignUp>
     </Container>
   );
 }
