@@ -1,3 +1,5 @@
+import { signIn } from "@/api/sign-in";
+import { useMutation } from "@tanstack/react-query";
 import { ReactNode, createContext, useState } from "react";
 
 interface AuthContextProps {
@@ -6,7 +8,7 @@ interface AuthContextProps {
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: () => Promise<void>;
+  login: (username: string, password: string) => Promise<boolean>;
   logout: () => Promise<void>;
 }
 
@@ -18,9 +20,20 @@ export function AuthContextProvider({ children }: AuthContextProps) {
     return auth === "true";
   });
 
-  const login = async () => {
-    setIsAuthenticated(true);
-    localStorage.setItem("auth", "true");
+  const { mutateAsync: authenticateFn } = useMutation({
+    mutationFn: signIn,
+  });
+
+  const login = async (username: string, password: string) => {
+    try {
+      await authenticateFn({ username, password });
+      setIsAuthenticated(true);
+      localStorage.setItem("auth", "true");
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   };
 
   const logout = async () => {

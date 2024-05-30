@@ -11,7 +11,6 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 const signInSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
   password: z.string().min(4, "No mínimo 6 carácteres"),
@@ -32,9 +31,13 @@ export function SignIn() {
   const navigate = useNavigate();
 
   async function handleSignIn(data: SignInSchema) {
-    console.log(data);
-    await login();
-    navigate("/");
+    const success = await login(data.username, data.password);
+    if (success) {
+      console.log("opa");
+      navigate("/");
+    } else {
+      alert("deu nao paizao");
+    }
   }
 
   return (
@@ -47,7 +50,7 @@ export function SignIn() {
             type="text"
             placeholder="informe seu usuário..."
             {...register("username")}
-            hasError={!!errors.username}
+            $hasError={!!errors.username}
           />
           {errors.username && <span>{errors.username.message}</span>}
         </div>
@@ -57,7 +60,7 @@ export function SignIn() {
             type="password"
             placeholder="informe sua senha..."
             {...register("password")}
-            hasError={!!errors.password}
+            $hasError={!!errors.password}
           />
           {errors.password && <span>{errors.password.message}</span>}
         </div>
