@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ButtonLink } from "../../../components/button-link";
+import { ButtonLink } from "@/components/button-link";
 import { Container, ContainerButtons } from "./styles";
-import { AuthContext } from "../../../contexts/auth-contexts";
+import { AuthContext } from "@/contexts/auth-contexts";
 
 export function PrivatePage() {
   const { isAuthenticated } = useContext(AuthContext);
