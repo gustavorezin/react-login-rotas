@@ -45,7 +45,7 @@ export function SignUp() {
             id="username"
             placeholder="informe seu usuário..."
             {...register("username")}
-            hasError={!!errors.username}
+            $hasError={!!errors.username}
           />
           {errors.username && <span>{errors.username.message}</span>}
         </div>
@@ -56,7 +56,7 @@ export function SignUp() {
             id="password"
             placeholder="informe sua senha..."
             {...register("password")}
-            hasError={!!errors.password}
+            $hasError={!!errors.password}
           />
           {errors.password && <span>{errors.password.message}</span>}
         </div>

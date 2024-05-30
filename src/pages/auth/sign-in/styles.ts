@@ -53,7 +53,7 @@ export const ContainerForm = styled.form`
 `;
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  hasError?: boolean;
+  $hasError?: boolean;
 }
 
 export const Input = styled.input<InputProps>`
@@ -67,7 +67,7 @@ export const Input = styled.input<InputProps>`
   border-radius: 0.25rem;
 
   ${(props) =>
-    props.hasError &&
+    props.$hasError &&
     css`
       border-color: ${(props) => props.theme.colors.red};
     `}
