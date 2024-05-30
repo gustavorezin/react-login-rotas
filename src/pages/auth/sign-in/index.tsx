@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../contexts/auth-contexts";
+import { AuthContext } from "@/contexts/auth-contexts";
 import {
   Container,
   ContainerForm,

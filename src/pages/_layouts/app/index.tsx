@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { Container, SignOut } from "./styles";
 import { useContext } from "react";
-import { AuthContext } from "../../../contexts/auth-contexts";
+import { AuthContext } from "@/contexts/auth-contexts";
+import { Container, SignOut } from "./styles";
 
 export function AppLayout() {
   const { isAuthenticated, logout } = useContext(AuthContext);

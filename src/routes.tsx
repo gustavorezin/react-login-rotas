@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { NormalPage } from "./pages/app/normal-page";
 import { NotFound } from "./pages/not-found";
-import { PrivatePage } from "./pages/private/private-page";
 import { Error } from "./pages/error";
 import { AuthLayout } from "./pages/_layouts/auth";
 import { AppLayout } from "./pages/_layouts/app";
 import { Home } from "./pages/app/home";
 import { SignIn } from "./pages/auth/sign-in";
 import { SignUp } from "./pages/auth/sign-up";
+import { PrivatePage } from "./pages/app/private/private-page";
 
 export const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import { ButtonLink } from "../../../components/button-link";
+import { ButtonLink } from "@/components/button-link";
 import { Container, ContainerButtons } from "./styles";
 
 export function Home() {
