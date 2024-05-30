@@ -13,4 +13,12 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.background};
     color: ${(props) => props.theme.colors.text};
   }
+
+  input:focus, 
+  select:focus, 
+  textarea:focus, 
+  button:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: none; /* Remove any default box-shadow */
+  }
 `;

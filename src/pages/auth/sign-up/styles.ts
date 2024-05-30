@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import * as Switch from "@radix-ui/react-switch";
 
 const breakpoints = {
@@ -40,9 +40,24 @@ export const ContainerForm = styled.form`
   @media (min-width: ${breakpoints.small}) {
     width: 32rem;
   }
+
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    span {
+      color: ${(props) => props.theme.colors.red};
+      font-size: 0.75rem;
+    }
+  }
 `;
 
-export const Input = styled.input`
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  hasError?: boolean;
+}
+
+export const Input = styled.input<InputProps>`
   height: 2.75rem;
   padding-inline: 0.5rem;
 
@@ -51,6 +66,12 @@ export const Input = styled.input`
 
   border: 1px solid ${(props) => props.theme.colors.buttonBorder};
   border-radius: 0.25rem;
+
+  ${(props) =>
+    props.hasError &&
+    css`
+      border-color: ${(props) => props.theme.colors.red};
+    `}
 `;
 
 export const ContainerSwitch = styled.div`
@@ -80,16 +101,16 @@ export const StyledSwitchRoot = styled(Switch.Root)`
 
 export const StyledSwitchThumb = styled(Switch.Thumb)`
   display: block;
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   transition: transform 100ms;
-  transform: translate(-3px, -5px);
+  transform: translate(2px, 0px);
 
   &[data-state="checked"] {
-    transform: translate(12px, -5px);
+    transform: translate(20px, 0px);
   }
 `;
 

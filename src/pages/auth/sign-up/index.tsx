@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { z } from "zod";
 import {
   Container,
   ContainerForm,
@@ -9,34 +9,66 @@ import {
   StyledSwitchRoot,
   StyledSwitchThumb,
 } from "./styles";
-import { AuthContext } from "../../../contexts/auth-contexts";
-import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const signUpSchema = z.object({
+  username: z.string().min(4, "No mínimo 4 carácteres"),
+  password: z.string().min(4, "No mínimo 6 carácteres"),
+  isAdmin: z.boolean().default(false),
+});
+
+type SignUpSchema = z.infer<typeof signUpSchema>;
 
 export function SignUp() {
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
+  });
 
-  async function handleLogin(event: React.FormEvent) {
-    event.preventDefault();
-    await login();
-    navigate("/");
+  async function handleSignUp(data: SignUpSchema) {
+    console.log(data);
   }
 
   return (
     <Container>
       <h1>Cadastre-se</h1>
-      <ContainerForm onSubmit={handleLogin}>
-        <Input type="email" id="email" placeholder="E-mail" />
-        <Input type="password" id="password" placeholder="Senha" />
+      <ContainerForm onSubmit={handleSubmit(handleSignUp)}>
+        <div className="form-input">
+          <label htmlFor="username">Usuário</label>
+          <Input
+            type="text"
+            id="username"
+            placeholder="informe seu usuário..."
+            {...register("username")}
+            hasError={!!errors.username}
+          />
+          {errors.username && <span>{errors.username.message}</span>}
+        </div>
+        <div className="form-input">
+          <label htmlFor="password">Senha</label>
+          <Input
+            type="password"
+            id="password"
+            placeholder="informe sua senha..."
+            {...register("password")}
+            hasError={!!errors.password}
+          />
+          {errors.password && <span>{errors.password.message}</span>}
+        </div>
         <ContainerSwitch>
           <StyledSwitchRoot
-            id="s1"
-            checked={true}
-            /* onCheckedChange={(checked) => (checked ? login() : logout())} */
+            id="isAdmin"
+            onCheckedChange={(checked) => setValue("isAdmin", checked)}
+            {...register("isAdmin")}
           >
             <StyledSwitchThumb />
           </StyledSwitchRoot>
-          <label htmlFor="s1">Permitir acesso administrador</label>
+          <label htmlFor="isAdmin">Permitir acesso administrador</label>
         </ContainerSwitch>
         <LoginButton type="submit">Cadastrar</LoginButton>
       </ContainerForm>

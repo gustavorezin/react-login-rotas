@@ -4,7 +4,7 @@ import { Container } from "./styles";
 export function AuthLayout() {
   return (
     <Container>
-      <span>ROTA PÚBLICA</span>
+      <span id="aviso-rota">ROTA PÚBLICA</span>
       <Outlet />
     </Container>
   );

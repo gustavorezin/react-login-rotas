@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const breakpoints = {
   small: "576px",
@@ -39,9 +39,24 @@ export const ContainerForm = styled.form`
   @media (min-width: ${breakpoints.small}) {
     width: 32rem;
   }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    span {
+      color: ${(props) => props.theme.colors.red};
+      font-size: 0.75rem;
+    }
+  }
 `;
 
-export const Input = styled.input`
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  hasError?: boolean;
+}
+
+export const Input = styled.input<InputProps>`
   height: 2.75rem;
   padding-inline: 0.5rem;
 
@@ -50,6 +65,12 @@ export const Input = styled.input`
 
   border: 1px solid ${(props) => props.theme.colors.buttonBorder};
   border-radius: 0.25rem;
+
+  ${(props) =>
+    props.hasError &&
+    css`
+      border-color: ${(props) => props.theme.colors.red};
+    `}
 `;
 
 export const LoginButton = styled.button`

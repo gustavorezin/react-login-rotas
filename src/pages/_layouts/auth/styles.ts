@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
 
-  span {
+  #aviso-rota {
     position: absolute;
     top: 6px;
     left: 6px;
