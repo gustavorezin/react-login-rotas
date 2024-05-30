@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useState } from "react";
-import { fakeTimerWait } from "../utils/fake-timer-wait";
 
 interface AuthContextProps {
   children: ReactNode;
@@ -20,7 +19,6 @@ export function AuthContextProvider({ children }: AuthContextProps) {
   });
 
   const login = async () => {
-    await fakeTimerWait();
     setIsAuthenticated(true);
     localStorage.setItem("auth", "true");
   };
