@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+<!-- <p align="center">
+  <img src="../.github/example.png" alt="Project Name">
+</p> -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Página de Login com Rotas
 
-Currently, two official plugins are available:
+Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Stacks Utilizadas
 
-## Expanding the ESLint configuration
+[![My Skills](https://skillicons.dev/icons?i=react,vite,ts)](https://skillicons.dev)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [React Query](https://tanstack.com/query/latest/docs/framework/react/quick-start)
+- [Axios](https://axios-http.com/docs/intro)
+- [React Router](https://reactrouter.com/en/main)
+- [React Hook Form](https://react-hook-form.com/get-started)
+- [Zod](https://zod.dev/?id=basic-usage)
+- [Styled Components](https://styled-components.com/docs)
+- [Radix](https://www.radix-ui.com/themes/docs/overview/getting-started)
+- [Json Server](https://www.npmjs.com/package/json-server)
 
-- Configure the top-level `parserOptions` property like this:
+## 📝 Começando
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. **Instale as dependências**: `npm install` ou `yarn`
+2. **Variáveis de ambiente**: Copie `.env.example` para um novo `.env.local`
+3. **Comece a desenvolver**: `npm run start:json-server (api) & npm run dev (frontend)`
+
+## 🚀 Contribuir
+
+Se você quiser contribuir, clone este repositório, crie sua própria branch de trabalho e mãos à obra!
+
+1. **Clone o projeto**:
+
+```bash
+git clone https://github.com/gustavorezin/react-login-page.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Crie uma feature/branch**:
+
+```bash
+git checkout -b feature/NAME
+```
+
+No final, abra um Pull Request explicando o problema resolvido ou a funcionalidade adicionada. Se existir, adicione capturas de tela das modificações visuais e aguarde pela revisão!
+
+[Como criar um Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request) |
+[Padrão de commits](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
+
+## 📃 Licença
+
+- Este projeto está sob a licença [MIT](./LICENSE)
