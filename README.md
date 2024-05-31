@@ -1,12 +1,15 @@
-<!-- <p align="center">
-  <img src="../.github/example.png" alt="Project Name">
-</p> -->
-
-# Página de Login com Rotas
+# Página de Login com Rotas 💻
 
 Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em React.
 
-## 🛠️ Stacks Utilizadas
+## 🎨 Layout
+
+<p align="center">
+    <img src="./.github/sign-up.png" alt="Image Example" width="400px">
+    <img src="./.github/home.png" alt="Image Example" width="400px">
+</p>
+
+## 🛠️ Tecnologias utilizadas
 
 [![My Skills](https://skillicons.dev/icons?i=react,vite,ts)](https://skillicons.dev)
 
