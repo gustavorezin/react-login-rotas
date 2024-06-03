@@ -35,7 +35,7 @@ Se você quiser contribuir, clone este repositório, crie sua própria branch de
 1. **Clone o projeto**:
 
 ```bash
-git clone https://github.com/gustavorezin/react-login-page.git
+git clone https://github.com/gustavorezin/react-login-rotas.git
 ```
 
 2. **Crie uma feature/branch**:
