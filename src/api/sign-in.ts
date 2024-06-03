@@ -1,11 +1,4 @@
-import { api } from "@/lib/axios";
-
-interface GetUserResponse {
-  id: number;
-  username: string;
-  password: string;
-  isAdmin: boolean;
-}
+import { getUsers } from "./get-users";
 
 interface SignInProps {
   username: string;
@@ -13,8 +6,7 @@ interface SignInProps {
 }
 
 export async function signIn({ username, password }: SignInProps) {
-  const response = await api.get<GetUserResponse[]>("/users");
-  const users = response.data;
+  const users = await getUsers();
 
   const user = users.find(
     (user) => user.username === username && user.password === password
