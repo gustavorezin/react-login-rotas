@@ -23,7 +23,7 @@ export function SignIn() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
   });
@@ -62,7 +62,9 @@ export function SignIn() {
           />
           {errors.password && <span>{errors.password.message}</span>}
         </div>
-        <LoginButton type="submit">Entrar</LoginButton>
+        <LoginButton type="submit" disabled={isSubmitting}>
+          Entrar
+        </LoginButton>
       </ContainerForm>
       <LinkSignUp to={"/auth/sign-up"}>Cadastre-se</LinkSignUp>
     </Container>

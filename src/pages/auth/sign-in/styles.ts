@@ -96,6 +96,11 @@ export const LoginButton = styled.button`
   &:hover {
     border-color: ${(props) => props.theme.colors.red};
   }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.buttonBorder};
+    cursor: not-allowed;
+  }
 `;
 
 export const LinkSignUp = styled(Link)`
