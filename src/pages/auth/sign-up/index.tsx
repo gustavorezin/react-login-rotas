@@ -11,10 +11,13 @@ import {
 } from "./styles";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { AuthContext } from "@/contexts/auth-contexts";
+import { useNavigate } from "react-router-dom";
 
 const signUpSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
-  password: z.string().min(4, "No mínimo 6 carácteres"),
+  password: z.string().min(6, "No mínimo 6 carácteres"),
   isAdmin: z.boolean().default(false),
 });
 
@@ -28,10 +31,23 @@ export function SignUp() {
     formState: { errors },
   } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      isAdmin: false,
+    },
   });
 
+  const navigate = useNavigate();
+  const { newUser } = useContext(AuthContext);
+
   async function handleSignUp(data: SignUpSchema) {
-    console.log(data);
+    const isSuccessNewUser = await newUser(
+      data.username,
+      data.password,
+      data.isAdmin
+    );
+    if (isSuccessNewUser) {
+      navigate("/");
+    }
   }
 
   return (
