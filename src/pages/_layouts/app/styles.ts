@@ -27,7 +27,7 @@ export const SignOut = styled.a`
   cursor: pointer;
 `;
 
-export const ContainerNotAuthorizated = styled.div`
+export const ContainerSessionExpired = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import { ButtonLink } from "@/components/button-link";
 import { Container, ContainerButtons } from "./styles";
-import { AuthContext } from "@/contexts/auth-contexts";
 
 export function PrivatePage() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const isAuthenticated = localStorage.getItem("auth") === "true";
 
   if (!isAuthenticated) {
     throw new Error("Você não tem permissão para acessar esta página");

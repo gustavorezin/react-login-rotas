@@ -3,14 +3,16 @@ import { useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import {
   Container,
-  ContainerNotAuthorizated,
+  ContainerSessionExpired,
   LinkGoBack,
   SignOut,
 } from "./styles";
 
 export function AppLayout() {
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const isAuthenticated = localStorage.getItem("auth") === "true";
 
   function handleSignInRedirect() {
     navigate("/auth/sign-in", { replace: true });
@@ -28,10 +30,10 @@ export function AppLayout() {
       {isAuthenticated ? (
         <Outlet />
       ) : (
-        <ContainerNotAuthorizated>
+        <ContainerSessionExpired>
           <h1>Sessão expirada</h1>
           <LinkGoBack onClick={handleSignInRedirect}>Fazer login</LinkGoBack>
-        </ContainerNotAuthorizated>
+        </ContainerSessionExpired>
       )}
     </Container>
   );
