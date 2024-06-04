@@ -21,6 +21,7 @@ Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em 
 - [Styled Components](https://styled-components.com/docs)
 - [Radix](https://www.radix-ui.com/themes/docs/overview/getting-started)
 - [Json Server](https://www.npmjs.com/package/json-server)
+- [Sonner Toaster](https://sonner.emilkowal.ski/)
 
 ## 📝 Começando
 
