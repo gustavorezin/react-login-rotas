@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-const breakpoints = {
-  small: "576px",
-  medium: "768px",
-  large: "992px",
-  xlarge: "1200px",
-};
-
 export const Container = styled.div`
   position: relative;
 
@@ -40,7 +33,7 @@ export const ContainerSessionExpired = styled.div`
     text-align: center;
     font-size: 2rem;
 
-    @media (min-width: ${breakpoints.medium}) {
+    @media (min-width: ${(props) => props.theme.breakpoints.medium}) {
       font-size: 4rem;
     }
   }

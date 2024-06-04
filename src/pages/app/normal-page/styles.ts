@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-const breakpoints = {
-  small: "576px",
-  medium: "768px",
-  large: "992px",
-  xlarge: "1200px",
-};
-
 export const Container = styled.div`
   height: 100vh;
   display: flex;
@@ -18,11 +11,11 @@ export const Container = styled.div`
     text-align: center;
   }
 
-  @media (min-width: ${breakpoints.medium}) {
+  @media (min-width: ${(props) => props.theme.breakpoints.medium}) {
     padding: 5rem 2rem;
   }
 
-  @media (min-width: ${breakpoints.large}) {
+  @media (min-width: ${(props) => props.theme.breakpoints.large}) {
     padding: 5rem 4rem;
   }
 `;

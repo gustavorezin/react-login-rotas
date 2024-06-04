@@ -1,16 +1,12 @@
+import { ButtonForm } from "@/components/button-form";
+import { InputForm } from "@/components/input-form";
 import { AuthContext } from "@/contexts/auth-contexts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import {
-  Container,
-  ContainerForm,
-  Input,
-  LinkSignUp,
-  LoginButton,
-} from "./styles";
 import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { Container, ContainerForm, LinkSignUp } from "./styles";
 
 const signInSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
@@ -43,28 +39,28 @@ export function SignIn() {
       <h1>Login</h1>
       <ContainerForm onSubmit={handleSubmit(handleSignIn)}>
         <div>
-          <label htmlFor="username">Usuário</label>
-          <Input
+          <InputForm
             type="text"
             placeholder="informe seu usuário..."
             {...register("username")}
-            $hasError={!!errors.username}
+            hasError={!!errors.username}
+            labelName="username"
+            labelTitle="Usuário"
           />
           {errors.username && <span>{errors.username.message}</span>}
         </div>
         <div>
-          <label htmlFor="username">Senha</label>
-          <Input
+          <InputForm
             type="password"
             placeholder="informe sua senha..."
             {...register("password")}
-            $hasError={!!errors.password}
+            hasError={!!errors.password}
+            labelName="password"
+            labelTitle="Senha"
           />
           {errors.password && <span>{errors.password.message}</span>}
         </div>
-        <LoginButton type="submit" disabled={isSubmitting}>
-          Entrar
-        </LoginButton>
+        <ButtonForm type="submit" disabled={isSubmitting} title={"Entrar"} />
       </ContainerForm>
       <LinkSignUp to={"/auth/sign-up"}>Cadastre-se</LinkSignUp>
     </Container>

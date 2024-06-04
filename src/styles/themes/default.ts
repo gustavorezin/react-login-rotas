@@ -7,4 +7,10 @@ export const defaultTheme = {
     buttonBackground: "#1a1a1a",
     buttonBorder: "#434343",
   },
+  breakpoints: {
+    small: "576px",
+    medium: "768px",
+    large: "992px",
+    xlarge: "1200px",
+  },
 } as const;

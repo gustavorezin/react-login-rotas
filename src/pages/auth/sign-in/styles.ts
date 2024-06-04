@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-
-const breakpoints = {
-  small: "576px",
-  medium: "768px",
-  large: "992px",
-  xlarge: "1200px",
-};
+import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
@@ -20,11 +13,11 @@ export const Container = styled.div`
     text-align: center;
   }
 
-  @media (min-width: ${breakpoints.medium}) {
+  @media (min-width: ${(props) => props.theme.breakpoints.medium}) {
     padding: 5rem 2rem;
   }
 
-  @media (min-width: ${breakpoints.large}) {
+  @media (min-width: ${(props) => props.theme.breakpoints.large}) {
     padding: 5rem 4rem;
   }
 `;
@@ -36,7 +29,7 @@ export const ContainerForm = styled.form`
   flex-direction: column;
   gap: 0.75rem;
 
-  @media (min-width: ${breakpoints.small}) {
+  @media (min-width: ${(props) => props.theme.breakpoints.small}) {
     width: 32rem;
   }
 
@@ -49,57 +42,6 @@ export const ContainerForm = styled.form`
       color: ${(props) => props.theme.colors.red};
       font-size: 0.75rem;
     }
-  }
-`;
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  $hasError?: boolean;
-}
-
-export const Input = styled.input<InputProps>`
-  height: 2.75rem;
-  padding-inline: 0.5rem;
-
-  background-color: ${(props) => props.theme.colors.buttonBackground};
-  color: ${(props) => props.theme.colors.text};
-
-  border: 1px solid ${(props) => props.theme.colors.buttonBorder};
-  border-radius: 0.25rem;
-
-  ${(props) =>
-    props.$hasError &&
-    css`
-      border-color: ${(props) => props.theme.colors.red};
-    `}
-`;
-
-export const LoginButton = styled.button`
-  height: 4rem;
-  margin-top: 1rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-
-  background-color: ${(props) => props.theme.colors.buttonBackground};
-  color: ${(props) => props.theme.colors.text};
-  font-weight: 700;
-  font-size: 1.125rem;
-
-  border: 1px solid ${(props) => props.theme.colors.buttonBorder};
-  border-radius: 0.25rem;
-  transition: 0.3s ease;
-
-  cursor: pointer;
-
-  &:hover {
-    border-color: ${(props) => props.theme.colors.red};
-  }
-
-  &:disabled {
-    background-color: ${(props) => props.theme.colors.buttonBorder};
-    cursor: not-allowed;
   }
 `;
 

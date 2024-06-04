@@ -1,19 +1,13 @@
-import { z } from "zod";
-import {
-  Container,
-  ContainerForm,
-  ContainerSwitch,
-  Input,
-  LinkSignIn,
-  LoginButton,
-  StyledSwitchRoot,
-  StyledSwitchThumb,
-} from "./styles";
-import { useForm } from "react-hook-form";
+import { ButtonForm } from "@/components/button-form";
+import { ButtonSwitch } from "@/components/button-switch";
+import { InputForm } from "@/components/input-form";
+import { AuthContext } from "@/contexts/auth-contexts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
-import { AuthContext } from "@/contexts/auth-contexts";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { Container, ContainerForm, LinkSignIn } from "./styles";
 
 const signUpSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
@@ -28,7 +22,7 @@ export function SignUp() {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -55,38 +49,37 @@ export function SignUp() {
       <h1>Cadastre-se</h1>
       <ContainerForm onSubmit={handleSubmit(handleSignUp)}>
         <div className="form-input">
-          <label htmlFor="username">Usuário</label>
-          <Input
+          <InputForm
             type="text"
             id="username"
             placeholder="informe seu usuário..."
             {...register("username")}
-            $hasError={!!errors.username}
+            hasError={!!errors.username}
+            labelName="username"
+            labelTitle="Usuário"
           />
           {errors.username && <span>{errors.username.message}</span>}
         </div>
         <div className="form-input">
-          <label htmlFor="password">Senha</label>
-          <Input
+          <InputForm
             type="password"
             id="password"
             placeholder="informe sua senha..."
             {...register("password")}
-            $hasError={!!errors.password}
+            hasError={!!errors.password}
+            labelName="password"
+            labelTitle="Senha"
           />
           {errors.password && <span>{errors.password.message}</span>}
         </div>
-        <ContainerSwitch>
-          <StyledSwitchRoot
-            id="isAdmin"
-            onCheckedChange={(checked) => setValue("isAdmin", checked)}
-            {...register("isAdmin")}
-          >
-            <StyledSwitchThumb />
-          </StyledSwitchRoot>
-          <label htmlFor="isAdmin">Permitir acesso administrador</label>
-        </ContainerSwitch>
-        <LoginButton type="submit">Cadastrar</LoginButton>
+        <ButtonSwitch
+          id="isAdmin"
+          onCheckedChange={(checked) => setValue("isAdmin", checked)}
+          {...register("isAdmin")}
+          labelName="isAdmin"
+          labelTitle="Permitir acesso administrador"
+        />
+        <ButtonForm type="submit" disabled={isSubmitting} title={"Cadastrar"} />
       </ContainerForm>
       <LinkSignIn to={"/auth/sign-in"}>Login</LinkSignIn>
     </Container>
