@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Container, ContainerForm, LinkSignUp } from "./styles";
+import { toast } from "sonner";
 
 const signInSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
@@ -31,6 +32,7 @@ export function SignIn() {
     const isSuccessLogin = await login(data.username, data.password);
     if (isSuccessLogin) {
       navigate("/");
+      toast.success("Usuário logado com sucesso!");
     }
   }
 

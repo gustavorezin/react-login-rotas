@@ -21,4 +21,8 @@ export const GlobalStyle = createGlobalStyle`
     outline: none; /* Remove the default focus outline */
     box-shadow: none; /* Remove any default box-shadow */
   }
+
+  .toaster-container {
+    padding: 1rem;
+  }
 `;

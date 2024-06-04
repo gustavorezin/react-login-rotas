@@ -13,6 +13,6 @@ export async function signIn({ username, password }: SignInProps) {
   );
 
   if (!user) {
-    throw new Error("Falha ao fazer login!");
+    throw new Error("Usuário não encontrado ou senha incorreta!");
   }
 }

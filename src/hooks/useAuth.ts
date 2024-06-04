@@ -1,6 +1,7 @@
 import { signIn } from "@/api/sign-in";
 import { signUp } from "@/api/sign-up";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 export function useAuth() {
   const { mutateAsync: authenticateFn } = useMutation({
@@ -18,7 +19,7 @@ export function useAuth() {
       return true;
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        toast.error(error.message);
       }
       return false;
     }
@@ -38,7 +39,7 @@ export function useAuth() {
       return await login(username, password);
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        toast.error(error.message);
       }
       return false;
     }
