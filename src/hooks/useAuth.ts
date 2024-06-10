@@ -19,7 +19,6 @@ export function useAuth({ setUser }: UseAuthProps) {
   const login = async (username: string, password: string) => {
     try {
       const user = await authenticateFn({ username, password });
-      localStorage.setItem("auth", "true");
       setUser({ username: user.username, isAdmin: user.isAdmin });
     } catch (error) {
       if (error instanceof Error) {
@@ -29,7 +28,6 @@ export function useAuth({ setUser }: UseAuthProps) {
   };
 
   const logout = async () => {
-    localStorage.removeItem("auth");
     setUser(null);
   };
 

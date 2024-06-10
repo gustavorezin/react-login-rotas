@@ -9,10 +9,8 @@ import {
 } from "./styles";
 
 export function AppLayout() {
-  const { logout } = useContext(AuthContext);
+  const { logout, user } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const isAuthenticated = localStorage.getItem("auth") === "true";
 
   function handleSignInRedirect() {
     navigate("/auth/sign-in", { replace: true });
@@ -27,7 +25,7 @@ export function AppLayout() {
     <Container>
       <span>ROTA PRIVADA</span>
       <SignOut onClick={handleLogout}>Sair</SignOut>
-      {isAuthenticated ? (
+      {user ? (
         <Outlet />
       ) : (
         <ContainerSessionExpired>
