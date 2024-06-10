@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import {
   Container,
+  ContainerChildren,
+  ContainerHeader,
   ContainerSessionExpired,
   LinkGoBack,
-  SignOut,
 } from "./styles";
 
 export function AppLayout() {
@@ -23,10 +24,17 @@ export function AppLayout() {
 
   return (
     <Container>
-      <span>ROTA PRIVADA</span>
-      <SignOut onClick={handleLogout}>Sair</SignOut>
+      <ContainerHeader>
+        <span>ROTA PRIVADA</span>
+        <span>{user?.isAdmin ? "ADMINISTRADOR" : "USUÁRIO COMUM"}</span>
+        <div>
+          <a onClick={handleLogout}>Sair</a>
+        </div>
+      </ContainerHeader>
       {user ? (
-        <Outlet />
+        <ContainerChildren>
+          <Outlet />
+        </ContainerChildren>
       ) : (
         <ContainerSessionExpired>
           <h1>Sessão expirada</h1>

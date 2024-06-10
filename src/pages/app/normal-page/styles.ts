@@ -1,22 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5rem 1rem;
 
   h1 {
     text-align: center;
-  }
-
-  @media (min-width: ${(props) => props.theme.breakpoints.medium}) {
-    padding: 5rem 2rem;
-  }
-
-  @media (min-width: ${(props) => props.theme.breakpoints.large}) {
-    padding: 5rem 4rem;
   }
 `;
 

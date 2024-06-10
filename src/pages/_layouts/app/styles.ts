@@ -1,27 +1,48 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem 1rem;
 
-  span {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    color: ${(props) => props.theme.colors.red};
-    font-weight: 700;
+  @media (min-width: ${(props) => props.theme.breakpoints.medium}) {
+    padding: 1rem 2rem;
+  }
+
+  @media (min-width: ${(props) => props.theme.breakpoints.large}) {
+    padding: 1rem 4rem;
   }
 `;
 
-export const SignOut = styled.a`
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  color: ${(props) => props.theme.colors.red};
-  cursor: pointer;
+export const ContainerHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span:nth-child(1) {
+    color: ${(props) => props.theme.colors.red};
+    font-weight: 700;
+    width: 30%;
+  }
+
+  div {
+    width: 30%;
+    text-align: end;
+    a {
+      color: ${(props) => props.theme.colors.red};
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ContainerChildren = styled.div`
+  flex: 1;
+  padding-top: 3rem;
 `;
 
 export const ContainerSessionExpired = styled.div`
-  height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

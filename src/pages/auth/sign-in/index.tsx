@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { z } from "zod";
-import { Container, ContainerForm, LinkSignUp } from "./styles";
 import { toast } from "sonner";
+import { z } from "zod";
+import { Container, ContainerForm } from "./styles";
 
 const signInSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
@@ -68,7 +68,6 @@ export function SignIn() {
         </div>
         <ButtonForm type="submit" disabled={isSubmitting} title={"Entrar"} />
       </ContainerForm>
-      <LinkSignUp to={"/auth/sign-up"}>Cadastre-se</LinkSignUp>
     </Container>
   );
 }
