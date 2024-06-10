@@ -9,6 +9,8 @@ Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em 
     <img src="./.github/home.png" alt="Image Example" width="400px">
 </p>
 
+![Demonstração do Projeto](./.github/app.gif)
+
 ## 🛠️ Tecnologias utilizadas
 
 [![My Skills](https://skillicons.dev/icons?i=react,vite,ts)](https://skillicons.dev)
