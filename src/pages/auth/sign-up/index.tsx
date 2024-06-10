@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Container, ContainerForm } from "./styles";
+import { Helmet } from "react-helmet-async";
 
 const signUpSchema = z.object({
   username: z.string().min(4, "No mínimo 4 carácteres"),
@@ -47,42 +48,49 @@ export function SignUp() {
   }
 
   return (
-    <Container>
-      <h1>Cadastre-se</h1>
-      <ContainerForm onSubmit={handleSubmit(handleSignUp)}>
-        <div className="form-input">
-          <InputForm
-            type="text"
-            id="username"
-            placeholder="informe seu usuário..."
-            {...register("username")}
-            hasError={!!errors.username}
-            labelName="username"
-            labelTitle="Usuário"
+    <>
+      <Helmet title="Cadastro" />
+      <Container>
+        <h1>Cadastre-se</h1>
+        <ContainerForm onSubmit={handleSubmit(handleSignUp)}>
+          <div className="form-input">
+            <InputForm
+              type="text"
+              id="username"
+              placeholder="informe seu usuário..."
+              {...register("username")}
+              hasError={!!errors.username}
+              labelName="username"
+              labelTitle="Usuário"
+            />
+            {errors.username && <span>{errors.username.message}</span>}
+          </div>
+          <div className="form-input">
+            <InputForm
+              type="password"
+              id="password"
+              placeholder="informe sua senha..."
+              {...register("password")}
+              hasError={!!errors.password}
+              labelName="password"
+              labelTitle="Senha"
+            />
+            {errors.password && <span>{errors.password.message}</span>}
+          </div>
+          <ButtonSwitch
+            id="isAdmin"
+            onCheckedChange={(checked) => setValue("isAdmin", checked)}
+            {...register("isAdmin")}
+            labelName="isAdmin"
+            labelTitle="Permitir acesso administrador"
           />
-          {errors.username && <span>{errors.username.message}</span>}
-        </div>
-        <div className="form-input">
-          <InputForm
-            type="password"
-            id="password"
-            placeholder="informe sua senha..."
-            {...register("password")}
-            hasError={!!errors.password}
-            labelName="password"
-            labelTitle="Senha"
+          <ButtonForm
+            type="submit"
+            disabled={isSubmitting}
+            title={"Cadastrar"}
           />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
-        <ButtonSwitch
-          id="isAdmin"
-          onCheckedChange={(checked) => setValue("isAdmin", checked)}
-          {...register("isAdmin")}
-          labelName="isAdmin"
-          labelTitle="Permitir acesso administrador"
-        />
-        <ButtonForm type="submit" disabled={isSubmitting} title={"Cadastrar"} />
-      </ContainerForm>
-    </Container>
+        </ContainerForm>
+      </Container>
+    </>
   );
 }

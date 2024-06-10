@@ -7,21 +7,25 @@ import { AuthContextProvider } from "./contexts/auth-contexts";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/react-query";
 import { Toaster } from "sonner";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 export function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <GlobalStyle />
-      <Toaster
-        richColors
-        position="bottom-center"
-        toastOptions={{ className: "toaster-container" }}
-      />
-      <QueryClientProvider client={queryClient}>
-        <AuthContextProvider>
-          <RouterProvider router={router} />
-        </AuthContextProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <Helmet titleTemplate="%s | react.rotas" />
+        <GlobalStyle />
+        <Toaster
+          richColors
+          position="bottom-center"
+          toastOptions={{ className: "toaster-container" }}
+        />
+        <QueryClientProvider client={queryClient}>
+          <AuthContextProvider>
+            <RouterProvider router={router} />
+          </AuthContextProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
