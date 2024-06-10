@@ -35,14 +35,14 @@ export function SignUp() {
   const { newUser } = useContext(AuthContext);
 
   async function handleSignUp(data: SignUpSchema) {
-    const isSuccessNewUser = await newUser(
-      data.username,
-      data.password,
-      data.isAdmin
-    );
-    if (isSuccessNewUser) {
+    try {
+      await newUser(data.username, data.password, data.isAdmin);
       navigate("/");
       toast.success("Usuário cadastrado com sucesso!");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
     }
   }
 

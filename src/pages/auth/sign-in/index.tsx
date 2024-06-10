@@ -29,10 +29,14 @@ export function SignIn() {
   const { login } = useContext(AuthContext);
 
   async function handleSignIn(data: SignInSchema) {
-    const isSuccessLogin = await login(data.username, data.password);
-    if (isSuccessLogin) {
+    try {
+      await login(data.username, data.password);
       navigate("/");
       toast.success("Usuário logado com sucesso!");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
     }
   }
 

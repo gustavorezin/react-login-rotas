@@ -6,13 +6,13 @@ interface AuthContextProps {
 }
 
 interface AuthContextType {
-  login: (username: string, password: string) => Promise<boolean>;
+  login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   newUser: (
     username: string,
     password: string,
     isAdmin: boolean
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextType);

@@ -1,7 +1,6 @@
 import { signIn } from "@/api/sign-in";
 import { signUp } from "@/api/sign-up";
 import { useMutation } from "@tanstack/react-query";
-import { toast } from "sonner";
 
 export function useAuth() {
   const { mutateAsync: authenticateFn } = useMutation({
@@ -16,12 +15,10 @@ export function useAuth() {
     try {
       await authenticateFn({ username, password });
       localStorage.setItem("auth", "true");
-      return true;
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        throw error;
       }
-      return false;
     }
   };
 
@@ -36,12 +33,11 @@ export function useAuth() {
   ) => {
     try {
       await registerFn({ username, password, isAdmin });
-      return await login(username, password);
+      await login(username, password);
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        throw error;
       }
-      return false;
     }
   };
 
