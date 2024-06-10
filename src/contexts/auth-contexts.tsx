@@ -1,6 +1,6 @@
 import { UserDTO } from "@/api/get-users";
 import { useAuth } from "@/hooks/useAuth";
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface AuthContextProps {
   children: ReactNode;
@@ -23,6 +23,21 @@ export function AuthContextProvider({ children }: AuthContextProps) {
   const [user, setUser] = useState<UserDTO | null>(null);
 
   const { login, logout, newUser } = useAuth({ setUser });
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ login, logout, newUser, user }}>

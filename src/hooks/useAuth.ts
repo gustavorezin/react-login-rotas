@@ -18,8 +18,10 @@ export function useAuth({ setUser }: UseAuthProps) {
 
   const login = async (username: string, password: string) => {
     try {
-      const user = await authenticateFn({ username, password });
-      setUser({ username: user.username, isAdmin: user.isAdmin });
+      const response = await authenticateFn({ username, password });
+      const user = { username: response.username, isAdmin: response.isAdmin };
+      setUser(user);
+      localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
       if (error instanceof Error) {
         throw error;
@@ -29,6 +31,7 @@ export function useAuth({ setUser }: UseAuthProps) {
 
   const logout = async () => {
     setUser(null);
+    localStorage.removeItem("user");
   };
 
   const newUser = async (
