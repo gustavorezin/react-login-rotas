@@ -28,8 +28,34 @@ export const ContainerHeader = styled.header`
 `;
 
 export const LinkAuthPages = styled(Link)`
+  position: relative;
   text-decoration: none;
-  color: ${(props) => props.theme.colors.red};
+  color: ${(props) => props.theme.colors.textPrimary};
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -1px;
+    left: 0;
+    border-radius: 2px;
+    background-color: ${(props) => props.theme.colors.red};
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  /* background-color: ${(props) => props.theme.colors.buttonBackground};
+  padding: 0.275rem 1.5rem;
+  border: 1px solid ${(props) => props.theme.colors.buttonBorder};
+  border-radius: 0.25rem;
+  transition: 0.3s ease;
+  &:hover {
+    border-color: ${(props) => props.theme.colors.red};
+  } */
 `;
 
 export const ContainerChildren = styled.div`
