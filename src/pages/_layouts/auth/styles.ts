@@ -20,11 +20,6 @@ export const ContainerHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  span {
-    color: ${(props) => props.theme.colors.green};
-    font-weight: 700;
-  }
 `;
 
 export const LinkAuthPages = styled(Link)`
@@ -47,15 +42,6 @@ export const LinkAuthPages = styled(Link)`
   &:hover::after {
     width: 100%;
   }
-
-  /* background-color: ${(props) => props.theme.colors.buttonBackground};
-  padding: 0.275rem 1.5rem;
-  border: 1px solid ${(props) => props.theme.colors.buttonBorder};
-  border-radius: 0.25rem;
-  transition: 0.3s ease;
-  &:hover {
-    border-color: ${(props) => props.theme.colors.red};
-  } */
 `;
 
 export const ContainerChildren = styled.div`

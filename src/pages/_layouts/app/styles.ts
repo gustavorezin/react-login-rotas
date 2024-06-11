@@ -20,18 +20,31 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  span:nth-child(1) {
-    color: ${(props) => props.theme.colors.red};
-    font-weight: 700;
-    width: 30%;
-  }
+  a {
+    position: relative;
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.textPrimary};
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
 
-  div {
-    width: 30%;
-    text-align: end;
-    a {
+    &:hover {
       color: ${(props) => props.theme.colors.red};
-      cursor: pointer;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -1px;
+      left: 0;
+      border-radius: 2px;
+      background-color: ${(props) => props.theme.colors.red};
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
     }
   }
 `;

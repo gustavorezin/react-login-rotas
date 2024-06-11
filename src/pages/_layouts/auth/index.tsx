@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { IconLockPage } from "../components/icon-lock-page";
 import {
   Container,
   ContainerChildren,
@@ -14,7 +15,7 @@ export function AuthLayout() {
   return (
     <Container>
       <ContainerHeader>
-        <span>ROTA PÚBLICA</span>
+        <IconLockPage typePage="PÚBLICA" />
         <LinkAuthPages to={`/auth/${toLink}`}>
           {toLink === "sign-in" ? "Login" : "Cadastre-se"}
         </LinkAuthPages>

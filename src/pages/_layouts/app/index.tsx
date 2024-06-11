@@ -8,6 +8,7 @@ import {
   ContainerSessionExpired,
   LinkGoBack,
 } from "./styles";
+import { IconLockPage } from "../components/icon-lock-page";
 
 export function AppLayout() {
   const { logout, user } = useContext(AuthContext);
@@ -25,7 +26,7 @@ export function AppLayout() {
   return (
     <Container>
       <ContainerHeader>
-        <span>ROTA PRIVADA</span>
+        <IconLockPage typePage="PRIVADA" />
         <span>{user?.isAdmin ? "ADMINISTRADOR" : "USUÁRIO COMUM"}</span>
         <div>
           <a onClick={handleLogout}>Sair</a>
