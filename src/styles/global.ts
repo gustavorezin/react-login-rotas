@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     font: 400 1rem "Reddit Sans", sans-serif;
     -webkit-font-smoothing: antialised;
     background-color: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.textPrimary};
   }
 
   input:focus, 

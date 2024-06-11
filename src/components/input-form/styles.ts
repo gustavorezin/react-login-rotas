@@ -9,7 +9,7 @@ export const Input = styled.input<InputProps>`
   padding-inline: 0.5rem;
 
   background-color: ${(props) => props.theme.colors.buttonBackground};
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.textPrimary};
 
   border: 1px solid ${(props) => props.theme.colors.buttonBorder};
   border-radius: 0.25rem;

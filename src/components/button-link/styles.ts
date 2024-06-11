@@ -11,7 +11,7 @@ export const LinkButton = styled(Link)`
   text-decoration: none;
 
   background-color: ${(props) => props.theme.colors.buttonBackground};
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.textPrimary};
   font-weight: 700;
 
   border: 1px solid ${(props) => props.theme.colors.buttonBorder};

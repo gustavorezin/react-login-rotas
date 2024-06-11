@@ -10,7 +10,7 @@ export const Button = styled.button`
   text-decoration: none;
 
   background-color: ${(props) => props.theme.colors.buttonBackground};
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.textPrimary};
   font-weight: 700;
   font-size: 1.125rem;
 
