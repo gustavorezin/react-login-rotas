@@ -25,6 +25,7 @@ Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em 
 - [Json Server](https://www.npmjs.com/package/json-server)
 - [Sonner Toaster](https://sonner.emilkowal.ski/)
 - [Helmet](https://www.npmjs.com/package/react-helmet-async)
+- [Phosphor Icons](https://phosphoricons.com/)
 
 ## 📝 Começando
 
