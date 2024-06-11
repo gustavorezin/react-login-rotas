@@ -1,3 +1,4 @@
+import { SpinnerLoading } from "../spinner-loading";
 import { Button } from "./styles";
 
 interface ButtonFormProps
@@ -6,5 +7,7 @@ interface ButtonFormProps
 }
 
 export function ButtonForm({ title, ...props }: ButtonFormProps) {
-  return <Button {...props}>{title}</Button>;
+  return (
+    <Button {...props}>{props.disabled ? <SpinnerLoading /> : title}</Button>
+  );
 }
