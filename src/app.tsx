@@ -8,23 +8,27 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/react-query";
 import { Toaster } from "sonner";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export function App() {
   return (
     <HelmetProvider>
       <ThemeProvider theme={defaultTheme}>
-        <Helmet titleTemplate="%s | react.rotas" />
-        <GlobalStyle />
-        <Toaster
-          richColors
-          position="bottom-center"
-          toastOptions={{ className: "toaster-container" }}
-        />
-        <QueryClientProvider client={queryClient}>
-          <AuthContextProvider>
-            <RouterProvider router={router} />
-          </AuthContextProvider>
-        </QueryClientProvider>
+        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          <Helmet titleTemplate="%s | react.rotas" />
+          <GlobalStyle />
+          <Toaster
+            richColors
+            position="bottom-center"
+            toastOptions={{ className: "toaster-container" }}
+          />
+          <QueryClientProvider client={queryClient}>
+            <AuthContextProvider>
+              <RouterProvider router={router} />
+            </AuthContextProvider>
+          </QueryClientProvider>
+        </SkeletonTheme>
       </ThemeProvider>
     </HelmetProvider>
   );
