@@ -16,8 +16,8 @@ export function Home() {
           <ButtonLink title="Página pública" to={"/normal-page"} />
           <ButtonLink title="Página inexistente" to={"/mundial-do-palmeiras"} />
           <ButtonLink
-            title="Página privada (administrador)"
-            to={"/private-page"}
+            title="Lista de usuários (administrador)"
+            to={"/user-list"}
           />
         </ContainerButtons>
       </Container>

@@ -7,7 +7,7 @@ import { AppLayout } from "./pages/_layouts/app";
 import { Home } from "./pages/app/home";
 import { SignIn } from "./pages/auth/sign-in";
 import { SignUp } from "./pages/auth/sign-up";
-import { PrivatePage } from "./pages/app/private/private-page";
+import { UserList } from "./pages/app/private/user-list";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "normal-page", element: <NormalPage /> },
-      { path: "private-page", element: <PrivatePage /> },
+      { path: "user-list", element: <UserList /> },
     ],
   },
   {
