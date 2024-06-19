@@ -5,8 +5,9 @@ Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em 
 ## 🎨 Layout
 
 <p align="center">
-    <img src="./.github/sign-up.png" alt="Image Example" width="400px">
-    <img src="./.github/home.png" alt="Image Example" width="400px">
+    <img src="./.github/sign-up.png" alt="Image Example" width="300px">
+    <img src="./.github/home.png" alt="Image Example" width="300px">
+    <img src="./.github/list-user.png" alt="Image Example" width="300px">
 </p>
 
 ![Demonstração do Projeto](./.github/app.gif)
@@ -26,6 +27,7 @@ Projeto pessoal, desenvolvido com o intuito de praticar alguns conhecimentos em 
 - [Sonner Toaster](https://sonner.emilkowal.ski/)
 - [Helmet](https://www.npmjs.com/package/react-helmet-async)
 - [Phosphor Icons](https://phosphoricons.com/)
+- [Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
 
 ## 📝 Começando
 
