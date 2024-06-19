@@ -19,7 +19,11 @@ export function useAuth({ setUser }: UseAuthProps) {
   const login = async (username: string, password: string) => {
     try {
       const response = await authenticateFn({ username, password });
-      const user = { username: response.username, isAdmin: response.isAdmin };
+      const user = {
+        id: response.id,
+        username: response.username,
+        isAdmin: response.isAdmin,
+      };
       setUser(user);
       localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {

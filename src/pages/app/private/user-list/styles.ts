@@ -31,8 +31,20 @@ export const Table = styled.table`
     color: #d3d3d3;
   }
 
+  .is-admin {
+    color: ${(props) => props.theme.colors.green};
+  }
+
+  .not-admin {
+    color: ${(props) => props.theme.colors.red};
+  }
+
   td:nth-child(2) {
     width: 70%;
+  }
+
+  td:nth-child(3) {
+    width: 10%;
   }
 
   tr:nth-child(even) {
@@ -46,25 +58,41 @@ export const Table = styled.table`
   tr:hover {
     background-color: #3c3c3c;
   }
+`;
 
-  button {
-    display: flex;
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
+export const ButtonPassword = styled.button`
+  display: flex;
+  gap: 0.25rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #d3d3d3;
+`;
 
-    background-color: ${(props) => props.theme.colors.buttonBackground};
-    color: ${(props) => props.theme.colors.textPrimary};
+export const ButtonDelete = styled.button`
+  display: flex;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
 
-    border: 1px solid ${(props) => props.theme.colors.buttonBorder};
-    border-radius: 0.25rem;
-    transition: 0.3s ease;
+  background-color: ${(props) => props.theme.colors.buttonBackground};
+  color: ${(props) => props.theme.colors.textPrimary};
 
-    cursor: pointer;
+  border: 1px solid ${(props) => props.theme.colors.buttonBorder};
+  border-radius: 0.25rem;
+  transition: 0.3s ease;
 
-    &:hover {
-      border-color: ${(props) => props.theme.colors.red};
-      color: ${(props) => props.theme.colors.red};
-    }
+  cursor: pointer;
+
+  &:hover {
+    border-color: ${(props) => props.theme.colors.red};
+    color: ${(props) => props.theme.colors.red};
+  }
+
+  &:disabled {
+    background-color: #555;
+    border-color: #777;
+    color: #999;
+    cursor: not-allowed;
   }
 `;
 

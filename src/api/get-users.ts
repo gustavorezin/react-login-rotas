@@ -1,6 +1,7 @@
 import { api } from "@/lib/axios";
 
 export interface UserDTO {
+  id: number;
   username: string;
   isAdmin: boolean;
 }
