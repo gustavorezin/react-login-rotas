@@ -3,8 +3,9 @@ import { getUsers } from "@/api/get-users";
 import { ButtonLink } from "@/components/button-link";
 import { UsersTableSkeleton } from "@/components/users-table-skeleton";
 import { AuthContext } from "@/contexts/auth-contexts";
+import { queryClient } from "@/lib/react-query";
 import { Eye, EyeSlash, Trash } from "@phosphor-icons/react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
@@ -18,7 +19,6 @@ import {
 
 export function UserList() {
   const { user } = useContext(AuthContext);
-  const queryClient = useQueryClient();
   const [visiblePasswords, setVisiblePasswords] = useState<
     Record<number, boolean>
   >({});
@@ -43,6 +43,7 @@ export function UserList() {
         throw new Error("Você não tem permissão para excluir o usuário atual.");
       }
       await deleteUserFn({ id });
+      toast.success("Usuário deletado com sucesso.");
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);
